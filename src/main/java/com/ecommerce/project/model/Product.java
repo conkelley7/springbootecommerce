@@ -1,11 +1,9 @@
 package com.ecommerce.project.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity
 @Data
@@ -18,12 +16,10 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long productId;
 
-    @NotBlank
     private String productName;
 
     private String image;
 
-    @NotBlank
     private String description;
 
     private Integer quantity;
