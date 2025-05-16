@@ -8,6 +8,16 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+/**
+ * Utility class providing methods for retrieving authentication and user-related information
+ * for the currently logged-in user. It is designed to work with Spring Security's
+ * authentication context.
+ *
+ * This service facilitates the retrieval of the authenticated user's email, user ID, and
+ * full user details. It interacts with the {@code UserRepository} for fetching user data
+ * from the database.
+ *
+ */
 @Service
 public class AuthUtil {
 
