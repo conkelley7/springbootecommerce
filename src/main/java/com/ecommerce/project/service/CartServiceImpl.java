@@ -21,20 +21,21 @@ import java.util.List;
 @Service
 public class CartServiceImpl implements CartService {
 
-    @Autowired
-    private CartRepository cartRepository;
+    private final CartRepository cartRepository;
+    private final ProductRepository productRepository;
+    private final CartItemRepository cartItemRepository;
+    private final ModelMapper modelMapper;
+    private final AuthUtil authUtil;
 
-    @Autowired
-    private ProductRepository productRepository;
+    public CartServiceImpl(CartRepository cartRepository, ProductRepository productRepository,
+                           CartItemRepository cartItemRepository, ModelMapper modelMapper, AuthUtil authUtil) {
+        this.cartRepository = cartRepository;
+        this.productRepository = productRepository;
+        this.cartItemRepository = cartItemRepository;
+        this.modelMapper = modelMapper;
+        this.authUtil = authUtil;
+    }
 
-    @Autowired
-    private CartItemRepository cartItemRepository;
-
-    @Autowired
-    private ModelMapper modelMapper;
-
-    @Autowired
-    private AuthUtil authUtil;
 
     @Override
     public CartDTO addProductToCart(Long productId, Integer quantity) {

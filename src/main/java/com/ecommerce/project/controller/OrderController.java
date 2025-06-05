@@ -5,7 +5,6 @@ import com.ecommerce.project.payload.OrderDTO;
 import com.ecommerce.project.payload.OrderRequestDTO;
 import com.ecommerce.project.security.service.AuthUtil;
 import com.ecommerce.project.service.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,11 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class OrderController {
 
-    @Autowired
-    private OrderService orderService;
+    private final OrderService orderService;
+    private final AuthUtil authUtil;
 
-    @Autowired
-    private AuthUtil authUtil;
+    public OrderController(OrderService orderService, AuthUtil authUtil) {
+        this.orderService = orderService;
+        this.authUtil = authUtil;
+    }
 
     @PostMapping("/users/order")
     public ResponseEntity<OrderDTO> orderProducts(@RequestBody OrderRequestDTO orderRequestDTO) {
