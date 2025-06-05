@@ -19,11 +19,14 @@ import java.util.List;
 @Service
 public class AddressServiceImpl implements AddressService {
 
-    @Autowired
-    ModelMapper modelMapper;
 
-    @Autowired
-    AddressRepository addressRepository;
+    private final ModelMapper modelMapper;
+    private final AddressRepository addressRepository;
+
+    public AddressServiceImpl(ModelMapper modelMapper, AddressRepository addressRepository) {
+        this.modelMapper = modelMapper;
+        this.addressRepository = addressRepository;
+    }
 
     @Override
     public AddressDTO createAddress(AddressDTO addressDTO, User user) {

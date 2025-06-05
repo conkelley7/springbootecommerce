@@ -16,29 +16,28 @@ import java.util.List;
 @Service
 public class OrderServiceImpl implements OrderService {
 
-    @Autowired
-    CartRepository cartRepository;
+    private final CartRepository cartRepository;
+    private final AddressRepository addressRepository;
+    private final PaymentRepository paymentRepository;
+    private final OrderRepository orderRepository;
+    private final OrderItemRepository orderItemRepository;
+    private final ProductRepository productRepository;
+    private final CartService cartService;
+    private final ModelMapper modelMapper;
 
-    @Autowired
-    AddressRepository addressRepository;
-
-    @Autowired
-    PaymentRepository paymentRepository;
-
-    @Autowired
-    OrderRepository orderRepository;
-
-    @Autowired
-    OrderItemRepository orderItemRepository;
-
-    @Autowired
-    ProductRepository productRepository;
-
-    @Autowired
-    CartService cartService;
-
-    @Autowired
-    ModelMapper modelMapper;
+    public OrderServiceImpl(CartRepository cartRepository, AddressRepository addressRepository,
+                            PaymentRepository paymentRepository, OrderRepository orderRepository,
+                            OrderItemRepository orderItemRepository, ProductRepository productRepository,
+                            CartService cartService, ModelMapper modelMapper) {
+        this.cartRepository = cartRepository;
+        this.addressRepository = addressRepository;
+        this.paymentRepository = paymentRepository;
+        this.orderRepository = orderRepository;
+        this.orderItemRepository = orderItemRepository;
+        this.productRepository = productRepository;
+        this.cartService = cartService;
+        this.modelMapper = modelMapper;
+    }
 
     @Transactional
     @Override
